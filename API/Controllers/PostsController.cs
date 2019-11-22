@@ -109,7 +109,7 @@ namespace API.Controllers
         {
             var post = context.Posts.Find(id);
 
-            if (post === null)
+            if (post == null)
             {
                 throw new Exception("Could not find post");
             }
