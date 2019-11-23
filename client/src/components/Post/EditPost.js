@@ -4,7 +4,7 @@ import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
 
-const EditPost = ({ onPostCreated }) => {
+const EditPost = ({ post, onPostUpdated }) => {
     let history = useHistory();
     const [postData, setPostData] = useState({
         title: post.title,
@@ -23,7 +23,7 @@ const EditPost = ({ onPostCreated }) => {
 
     const update = async () => {
         if (!title || !body) {
-            console.log('Title and body are required';)
+            console.log('Title and body are required');
         } else {
             const newPost = {
                 id: post.id,
@@ -40,13 +40,13 @@ const EditPost = ({ onPostCreated }) => {
                 };
 
                 const body = JSON.stringify(newPost);
-                const res = await axios.post(
+                const res = await axios.put(
                     'http://localhost:5000/api/posts',
                     body,
                     config
                 );
 
-                onPostCreated(res.data);
+                onPostUpdated(res.data);
                 history.push('/');
             } catch (error) {
                 console.error(`Error creating post: ${error.response.data}`);

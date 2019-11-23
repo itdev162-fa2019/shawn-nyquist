@@ -24,10 +24,10 @@ const CreatePost = ({ onPostCreated }) => {
 
     const create = async () => {
         if (!title || !body) {
-            console.log('Title and body are required';)
+            console.log('Title and body are required');
         } else {
             const newPost = {
-                id: uuid.v4();
+                id: uuid.v4(),
                 title: title,
                 body: body,
                 date: moment().toISOString()
